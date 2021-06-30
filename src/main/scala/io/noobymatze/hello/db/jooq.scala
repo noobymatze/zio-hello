@@ -11,7 +11,7 @@ object jooq:
 
   type Jooq = Has[Service]
 
-  def query[A](f: DSLContext => A): JIO[A] = ZIO.serviceWith { (jooq: Service) =>
+  def query[A](f: DSLContext => A): JIO[A] = ZIO.serviceWith { jooq =>
     ZIO.effect(f(jooq.dsl)).refineOrDie { case ex: DataAccessException => ex }
   }
 
