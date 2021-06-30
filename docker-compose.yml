@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:12.2
+    restart: on-failure
+    ports:
+      - 7086:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime
+    environment:
+      POSTGRES_USER: noobymatze
+      POSTGRES_PASSWORD: sql
+      POSTGRES_DB: hello
+
+volumes:
+  db-data:
+    driver: local

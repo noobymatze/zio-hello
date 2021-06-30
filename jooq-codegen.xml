@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.14.0.xsd">
+    <jdbc>
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:7086/hello</url>
+        <user>noobymatze</user>
+        <password>sql</password>
+    </jdbc>
+
+    <!-- Generator parameters -->
+    <generator>
+        <!-- <name>org.jooq.codegen.ScalaGenerator</name> -->
+
+        <database>
+            <name>org.jooq.meta.postgres.PostgresDatabase</name>
+            <includes>.*</includes>
+            <excludes/>
+            <inputSchema>hello</inputSchema>
+            <outputSchemaToDefault>true</outputSchemaToDefault>
+        </database>
+        <target>
+            <packageName>io.noobymatze.hello</packageName>
+            <directory>${sourceManaged}</directory>
+        </target>
+        <generate>
+            <validationAnnotations>false</validationAnnotations>
+            <javaTimeTypes>true</javaTimeTypes>
+        </generate>
+    </generator>
+</configuration>
