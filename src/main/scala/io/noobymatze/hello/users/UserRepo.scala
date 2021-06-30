@@ -9,9 +9,8 @@ import zio._
 import scala.jdk.CollectionConverters._
 
 
-trait UserRepo {
+trait UserRepo:
 
   def select(id: Long): JIO[List[UsersRecord]] =
     jooq.query(_.selectFrom(Tables.USERS).fetch().asScala.toList)
 
-}

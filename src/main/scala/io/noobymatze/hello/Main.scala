@@ -10,7 +10,7 @@ import java.io.PrintWriter
 import java.util.Properties
 
 
-object Main extends zio.App {
+object Main extends zio.App:
 
   val config = Config(
     database = DatabaseConfig(
@@ -28,7 +28,6 @@ object Main extends zio.App {
   def run(args: List[String]) =
     program.exitCode
 
-}
 
 //@main def hello: Unit =
 //  val dbConfig = io.noobymatze.hello.DatabaseConfig(

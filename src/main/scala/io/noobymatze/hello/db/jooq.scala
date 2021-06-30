@@ -5,7 +5,7 @@ import org.jooq.exception.DataAccessException
 import zio._
 
 
-object jooq {
+object jooq:
 
   type JIO[A] = ZIO[Jooq, DataAccessException, A]
 
@@ -15,10 +15,7 @@ object jooq {
     ZIO.effect(f(jooq.dsl)).refineOrDie { case ex: DataAccessException => ex }
   }
 
-  trait Service {
+  trait Service:
 
     val dsl: DSLContext
 
-  }
-
-}
