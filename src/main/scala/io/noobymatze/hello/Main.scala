@@ -46,6 +46,7 @@ object Main extends zio.App:
   } yield ()
 
   def run(args: List[String]) = {
+    // The DataSource should probably be a layer as well
     val jooqLayer = ZLayer.fromEffect(Jooq.make(config.database))
     val env = Console.live ++ jooqLayer
     program.provideLayer(env).exitCode
@@ -56,29 +57,4 @@ extension [T](x: T)
     init(x)
     x
   }
-
-
-//@main def hello: Unit =
-//  val dbConfig = io.noobymatze.hello.DatabaseConfig(
-//    url = "jdbc:postgresql://localhost:7086/hello",
-//    user = "noobymatze",
-//    password = "sql",
-//    schema = "hello"
-//  )
-//
-//  val props = new Properties()
-//  props.put("dataSource.logWriter", PrintWriter(System.out))
-//
-//  val conf: HikariConfig = HikariConfig(props)
-//  conf.setJdbcUrl(dbConfig.url)
-//  conf.setDriverClassName("org.postgresql.Driver")
-//  conf.setPassword(dbConfig.password)
-//  conf.setUsername(dbConfig.user)
-//  conf.setSchema(dbConfig.schema)
-//
-//  val ds = HikariDataSource(conf)
-//
-//  val dsl = DSL.using(ds, SQLDialect.POSTGRES)
-
-  //println(result)
 
